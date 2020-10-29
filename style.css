@@ -1,0 +1,43 @@
+
+body {
+  text-align: center;
+}
+
+
+  .cols {
+      display: flex; 
+      flex-direction: column;
+      width: 100%;
+      
+     
+      
+  }
+
+  #block {
+    
+    height: 100%;
+    box-shadow: 1px 1px 3px black;
+    
+  }
+
+
+
+  #main {
+    
+    display: flex;
+    border: 2px solid rebeccapurple;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    
+  }
+
+  .btn {
+    margin-bottom: 30px;
+  }
+
+ 
+
+
+  
+  
