@@ -1,15 +1,18 @@
 
-function sketch() {
-
-function grid(gridSize) {
-
-    gridSize = prompt("Enter the grid size:");
+// Create grid
+function grid() {
 
     let divMain = document.createElement('div');
     divMain.id = 'main';
-    document.body.appendChild(divMain);
+    document.body.append(divMain);
+    let gridSize = prompt("Enter grid size 1-100:");
 
-            for (let i = 0; i < gridSize; i++) {
+        if (gridSize > 100) {
+            alert('Please enter a grid size of 1 - 100.');
+            gridSize = prompt("Enter grid size 1-100:");
+        }
+
+        for (let i = 0; i < gridSize; i++) {
 
             let div = document.createElement('div')
             div.id = "container" + i;
@@ -17,7 +20,7 @@ function grid(gridSize) {
             document.getElementById('container' + i).className = "cols"
             
 
-             for (let j = 0; j < gridSize; j++) {
+        for (let j = 0; j < gridSize; j++) {
 
             let gridBlock = document.createElement('div');
             gridBlock.className = "color" 
@@ -27,41 +30,24 @@ function grid(gridSize) {
             
     
     
- }
- 
-};
+        }
+    };
 
+    
 
+// Color when mouse enters
 
-let blocks = document.getElementsByClassName('color');
+        let blocks = document.getElementsByClassName('color');
 
-
-
-for (let k = 0; k < blocks.length; k++ ) {
-    blocks[k].addEventListener('mouseenter', function() {
-        blocks[k].style.backgroundColor = "red";
+            for (let k = 0; k < blocks.length; k++ ) {
+            blocks[k].addEventListener('mouseenter', function() {
+            blocks[k].style.backgroundColor = "#eb4933";
         
-        
-    });
-
-
-
-
-
+        });
+    }
 }
 
-}
-
-
-
-grid();
-
-
-
-}
-
-
-
+// reset grid to default color
 
 function resetGrid() {
 
@@ -69,29 +55,33 @@ function resetGrid() {
 
         resetBtn.addEventListener('click', function() {
         let blocks = document.getElementsByClassName('color');
-
+        
         for (let k = 0; k < blocks.length; k++ ) {
        
         blocks[k].style.backgroundColor = "";
         
-        };
-
         
+        };
     });
 }
 
-// function resizeGrid() {
-//     const resize = document.getElementById('size');
-//     const remElem = document.getElementById('block');
-//     resize.addEventListener('click', function(){
-        
-//         remElem.parentNode.removeChild(remElem);
-        
-//     });
-        
-    
-// }
-// resizeGrid();
+// Resize grid
 
+function resizeGrid() {
+    
+let resizeBtn = document.getElementById('size');
+
+        resizeBtn.addEventListener('click', function() {
+
+            let column = document.getElementsByClassName('cols');
+            document.getElementById('main').remove(column);
+            grid();
+
+    }); 
+}
+
+
+
+
+resizeGrid();
 resetGrid();
-sketch();
