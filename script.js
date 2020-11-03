@@ -32,20 +32,66 @@ function grid() {
     
         }
     };
+function randomCol() {
+
+    let blocks = document.getElementsByClassName('color');
+    let randomColor = document.getElementById('random');
+
+    // function randomC(){
+    //     var color = "#";
+    //     var randomHex = "123456ABCDEF";  
+    //     for(var i = 0; i<6;i++){
+    //         color+= randomHex[Math.floor(Math.random()*16)]
+    //     }
+       
+    //     return color;
+    // }
+
+
+    
+
+    randomColor.addEventListener('click', function() {
+        for (let k = 0; k < blocks.length; k++ ) {
+
+            let rainbowColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+            
+            blocks[k].addEventListener('mouseenter', function() {
+            blocks[k].style.backgroundColor = rainbowColor;
+            });
+        }
+    });
+
+
+        
+}
+    
+randomCol();
 
     
 
 // Color when mouse enters
+function colorBlock() {
 
-        let blocks = document.getElementsByClassName('color');
+                let blocks = document.getElementsByClassName('color');
+                let defaultCol = document.getElementById('default')
 
-            for (let k = 0; k < blocks.length; k++ ) {
-            blocks[k].addEventListener('mouseenter', function() {
-            blocks[k].style.backgroundColor = "#eb4933";
-        
+                defaultCol.addEventListener('click', function() {
+                for (let k = 0; k < blocks.length; k++ ) {
+                blocks[k].addEventListener('mouseenter', function() {
+                blocks[k].style.backgroundColor = "#eb4933";
+                
+    
+                });
+
+            }
         });
+    
     }
+colorBlock();  
+
 }
+
+
 
 // reset grid to default color
 
@@ -84,4 +130,5 @@ let resizeBtn = document.getElementById('size');
 
 
 resizeGrid();
+
 resetGrid();
